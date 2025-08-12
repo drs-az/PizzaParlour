@@ -68,16 +68,21 @@ function showTutorial() {
     'Have fun serving pizzas!'
   ];
   let idx = 0;
-  tutorialBox.textContent = steps[idx];
+  tutorialBox.innerHTML = `<div id="tutorial-text">${steps[idx]}</div><button id="tutorial-next">Next</button>`;
   tutorialBox.classList.remove('hidden');
-  tutorialBox.addEventListener('click', next);
+  const text = document.getElementById('tutorial-text');
+  const btn = document.getElementById('tutorial-next');
+  btn.addEventListener('click', next);
   function next() {
     idx++;
     if (idx < steps.length) {
-      tutorialBox.textContent = steps[idx];
+      text.textContent = steps[idx];
+      if (idx === steps.length - 1) {
+        btn.textContent = 'Start';
+      }
     } else {
       tutorialBox.classList.add('hidden');
-      tutorialBox.removeEventListener('click', next);
+      btn.removeEventListener('click', next);
       state.tutorial = false;
       saveState();
       startPrep();
