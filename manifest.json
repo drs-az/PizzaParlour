@@ -1,6 +1,6 @@
 {
   "name": "Pizza Parlour",
-  "short_name": "PizzaParlour",
+  "short_name": "Pizza Parlour",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#ffffff",
