@@ -1,1 +1,33 @@
-1
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
+  <title>Pizza Parlour</title>
+</head>
+<body>
+  <div id="top-bar">
+    <div id="day">Day 1</div>
+    <div id="time">120s</div>
+    <div id="coins">$0</div>
+    <div id="satisfaction">😊100</div>
+    <button id="menu-btn" aria-label="menu">☰</button>
+  </div>
+  <div id="center"></div>
+  <div id="bottom-bar"></div>
+
+  <div id="tutorial" class="hidden"></div>
+  <div id="dashboard" class="hidden"></div>
+
+  <script src="game.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('service-worker.js');
+      });
+    }
+  </script>
+</body>
+</html>
