@@ -1,0 +1,8 @@
+{
+  "name": "pizza-parlour",
+  "version": "1.0.0",
+  "description": "Kid-friendly PWA game",
+  "scripts": {
+    "test": "echo 'no tests'"
+  }
+}
