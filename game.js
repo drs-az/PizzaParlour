@@ -83,8 +83,19 @@ function startPrep() {
   ['dough','sauce','cheese','pepperoni','mushrooms','peppers'].forEach(k => {
     const cost = config.unitCost[k];
     const label = document.createElement('label');
-    label.textContent = `${k} ($${cost})`;
-    label.style.display = 'block';
+    label.style.display = 'flex';
+    label.style.alignItems = 'center';
+    const img = document.createElement('img');
+    img.src = `img/${k}.png`;
+    img.alt = k;
+    img.style.width = '60px';
+    img.style.height = '60px';
+    img.style.marginRight = '4px';
+    label.appendChild(img);
+    const span = document.createElement('span');
+    span.textContent = `($${cost})`;
+    span.style.marginRight = '4px';
+    label.appendChild(span);
     const inp = document.createElement('input');
     inp.type = 'number'; inp.min = 0; inp.value = 0; inp.style.width='60px';
     inputs[k]=inp;
@@ -150,9 +161,22 @@ function startService(demand){
   const ingredients=['dough','sauce','cheese','pepperoni','mushrooms','peppers'];
   const assemble={dough:0,sauce:0,cheese:0,pepperoni:0,mushrooms:0,peppers:0};
   ingredients.forEach(k=>{
-    const b=document.createElement('button'); b.textContent=k; b.addEventListener('click',()=>{assemble[k]++; renderAssembly();}); assembly.appendChild(b);
+    const b=document.createElement('button');
+    b.className='image-btn';
+    const img=document.createElement('img');
+    img.src=`img/${k}.png`;
+    img.alt=k;
+    b.appendChild(img);
+    b.addEventListener('click',()=>{assemble[k]++; renderAssembly();});
+    assembly.appendChild(b);
   });
-  const serveBtn=document.createElement('button'); serveBtn.textContent='Bake/Serve'; assembly.appendChild(serveBtn);
+  const serveBtn=document.createElement('button');
+  serveBtn.className='image-btn';
+  const serveImg=document.createElement('img');
+  serveImg.src='img/bakeandserve.png';
+  serveImg.alt='Bake and Serve';
+  serveBtn.appendChild(serveImg);
+  assembly.appendChild(serveBtn);
   const assembleView=document.createElement('div'); assembly.appendChild(assembleView);
   function renderAssembly(){
     let parts=[]; ingredients.forEach(k=>{if(assemble[k]) parts.push(`${k}(${assemble[k]})`);});
