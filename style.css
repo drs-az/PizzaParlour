@@ -4,6 +4,14 @@ html, body {
   font-family: 'Arial', sans-serif;
   background: #fff8e1;
   color: #333;
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
 
 #top-bar, #bottom-bar {
@@ -16,6 +24,11 @@ html, body {
   font-size: 18px;
 }
 
+#bottom-bar {
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
 #top-bar a {
   color: white;
 }
@@ -23,6 +36,8 @@ html, body {
 #center {
   padding: 10px;
   text-align: center;
+  flex: 1 1 auto;
+  overflow-y: auto;
 }
 
 button, input[type=number], input[type=range] {
