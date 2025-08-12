@@ -31,6 +31,10 @@ const center = document.getElementById('center');
 const bottom = document.getElementById('bottom-bar');
 const dashboardBox = document.getElementById('dashboard');
 const menuBtn = document.getElementById('menu-btn');
+const bgMusic = document.getElementById('bg-music');
+if (state.settings.audio) {
+  bgMusic.play().catch(() => {});
+}
 
 menuBtn.addEventListener('click', () => {
   dashboardBox.classList.toggle('hidden');
@@ -80,6 +84,7 @@ function startPrep() {
     const cost = config.unitCost[k];
     const label = document.createElement('label');
     label.textContent = `${k} ($${cost})`;
+    label.style.display = 'block';
     const inp = document.createElement('input');
     inp.type = 'number'; inp.min = 0; inp.value = 0; inp.style.width='60px';
     inputs[k]=inp;
