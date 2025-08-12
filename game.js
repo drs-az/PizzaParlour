@@ -15,8 +15,7 @@ let state = JSON.parse(localStorage.getItem('pp-state')) || {
   inventory: { dough: 0, sauce: 0, cheese: 0, pepperoni: 0, mushrooms: 0, peppers: 0 },
   price: 8,
   settings: { audio: true, reducedMotion: false },
-  history: [],
-  tutorial: true
+  history: []
 };
 
 function saveState() {
@@ -30,7 +29,6 @@ const topCoins = document.getElementById('coins');
 const topSatisfaction = document.getElementById('satisfaction');
 const center = document.getElementById('center');
 const bottom = document.getElementById('bottom-bar');
-const tutorialBox = document.getElementById('tutorial');
 const dashboardBox = document.getElementById('dashboard');
 const menuBtn = document.getElementById('menu-btn');
 
@@ -57,32 +55,6 @@ function updateInventoryBar() {
     span.textContent = `${k}:${state.inventory[k]}`;
     bottom.appendChild(span);
   });
-}
-
-function showTutorial() {
-  const steps = [
-    'Welcome to Pizza Parlour!',
-    'Price affects how many customers come.',
-    'Profit = Revenue – Costs.',
-    'Order enough ingredients to avoid stockouts.',
-    'Have fun serving pizzas!'
-  ];
-  let idx = 0;
-  tutorialBox.textContent = steps[idx];
-  tutorialBox.classList.remove('hidden');
-  tutorialBox.addEventListener('click', next);
-  function next() {
-    idx++;
-    if (idx < steps.length) {
-      tutorialBox.textContent = steps[idx];
-    } else {
-      tutorialBox.classList.add('hidden');
-      tutorialBox.removeEventListener('click', next);
-      state.tutorial = false;
-      saveState();
-      startPrep();
-    }
-  }
 }
 
 function startPrep() {
@@ -318,8 +290,4 @@ function renderDashboard(){
 }
 
 // Start game
-if(state.tutorial){
-  showTutorial();
-} else {
-  startPrep();
-}
+startPrep();
