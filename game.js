@@ -79,6 +79,9 @@ function startPrep() {
 
   const orderDiv = document.createElement('div');
   orderDiv.innerHTML = '<h2>Order Ingredients</h2>';
+  const grid = document.createElement('div');
+  grid.className = 'ingredient-grid';
+  orderDiv.appendChild(grid);
   const inputs = {};
   ['dough','sauce','cheese','pepperoni','mushrooms','peppers'].forEach(k => {
     const cost = config.unitCost[k];
@@ -100,7 +103,7 @@ function startPrep() {
     inp.type = 'number'; inp.min = 0; inp.value = 0; inp.style.width='60px';
     inputs[k]=inp;
     label.appendChild(inp);
-    orderDiv.appendChild(label);
+    grid.appendChild(label);
   });
   const totalP = document.createElement('div');
   orderDiv.appendChild(totalP);
@@ -157,6 +160,9 @@ function startService(demand){
   updateInventoryBar();
   const custDiv=document.getElementById('customers');
   const assembly=document.getElementById('assembly');
+  const grid=document.createElement('div');
+  grid.id='assembly-grid';
+  assembly.appendChild(grid);
 
   const ingredients=['dough','sauce','cheese','pepperoni','mushrooms','peppers'];
   const assemble={dough:0,sauce:0,cheese:0,pepperoni:0,mushrooms:0,peppers:0};
@@ -168,15 +174,15 @@ function startService(demand){
     img.alt=k;
     b.appendChild(img);
     b.addEventListener('click',()=>{assemble[k]++; renderAssembly();});
-    assembly.appendChild(b);
+    grid.appendChild(b);
   });
   const serveBtn=document.createElement('button');
-  serveBtn.className='image-btn';
+  serveBtn.className='image-btn bake-btn';
   const serveImg=document.createElement('img');
   serveImg.src='img/bakeandserve.png';
   serveImg.alt='Bake and Serve';
   serveBtn.appendChild(serveImg);
-  assembly.appendChild(serveBtn);
+  grid.appendChild(serveBtn);
   const assembleView=document.createElement('div'); assembly.appendChild(assembleView);
   function renderAssembly(){
     let parts=[]; ingredients.forEach(k=>{if(assemble[k]) parts.push(`${k}(${assemble[k]})`);});

@@ -80,3 +80,25 @@ button, input[type=number], input[type=range] {
   height: 60px;
   pointer-events: none;
 }
+
+/* Ingredient ordering two-column grid */
+.ingredient-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  justify-items: center;
+}
+
+/* Pizza assembly layout */
+#assembly-grid {
+  display: grid;
+  grid-template-columns: repeat(3, auto) auto;
+  grid-template-rows: repeat(2, auto);
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+}
+
+#assembly-grid .bake-btn {
+  grid-row: 1 / span 2;
+}
