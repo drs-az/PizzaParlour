@@ -67,3 +67,16 @@ button, input[type=number], input[type=range] {
   height: 20px;
   margin: 4px 0;
 }
+
+/* Image based buttons for kid-friendly play */
+.image-btn {
+  background: none;
+  border: none;
+  padding: 4px;
+}
+
+.image-btn img {
+  width: 60px;
+  height: 60px;
+  pointer-events: none;
+}
