@@ -56,6 +56,13 @@ button, input[type=number], input[type=range] {
   margin: 6px;
 }
 
+.order-icon {
+  width: 40px;
+  height: 40px;
+  margin: 0 2px;
+  vertical-align: middle;
+}
+
 .hidden { display: none; }
 
 #dashboard {
