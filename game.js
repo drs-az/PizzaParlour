@@ -232,8 +232,8 @@ function startService(demand){
       div.appendChild(label);
 
       const orderSpan=document.createElement('span');
-      const toppings=c.toppings.length ? c.toppings : ['cheese'];
-      toppings.forEach(t=>{
+      const base=['dough','sauce','cheese'];
+      [...base, ...c.toppings].forEach(t=>{
         const img=document.createElement('img');
         img.src=`img/${t}.png`;
         img.alt=t;
