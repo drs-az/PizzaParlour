@@ -224,9 +224,29 @@ function startService(demand){
   function renderCustomers(){
     custDiv.innerHTML='';
     serviceData.customers.forEach(c=>{
-      const div=document.createElement('div'); div.className='customer';
-      const toppingText=c.toppings.length?c.toppings.join(','):'plain';
-      div.innerHTML=`Customer wants: ${toppingText} <div id="wait-${c.id}">😀</div>`;
+      const div=document.createElement('div');
+      div.className='customer';
+
+      const label=document.createElement('span');
+      label.textContent='Customer wants: ';
+      div.appendChild(label);
+
+      const orderSpan=document.createElement('span');
+      const base=['dough','sauce','cheese'];
+      [...base, ...c.toppings].forEach(t=>{
+        const img=document.createElement('img');
+        img.src=`img/${t}.png`;
+        img.alt=t;
+        img.className='order-icon';
+        orderSpan.appendChild(img);
+      });
+      div.appendChild(orderSpan);
+
+      const wait=document.createElement('div');
+      wait.id=`wait-${c.id}`;
+      wait.textContent='😀';
+      div.appendChild(wait);
+
       custDiv.appendChild(div);
     });
   }
